@@ -1,0 +1,47 @@
+﻿@model AcademicDegree
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Elmi dərəcə</h4>
+                    <span>
+                        Yenisini yaratmaq
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#">Elmi dərəcə</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-body">
+    <div class="card p-3">
+        <div class="card-block">
+            <form asp-action="Create">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Ad</label>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Yarat" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-primary">Geriyə qayıt</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,192 @@
+* {
+  font-family: "DM Sans", sans-serif;
+}
+
+body {
+    background-image: url('https://www.student-complete.com/public/assets/images/banner01.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+body .filter {
+  width: 100%;
+  height: 140vh;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  background-attachment: fixed;
+}
+body .navbar {
+  background-color: rgb(52, 72, 103);
+  height: 60px;
+}
+body .navbar .navbar-toggler {
+  border: none;
+}
+body .modal {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+body .modal .modal-dialog .modal-content {
+  background-color: rgba(51, 153, 160, 0.5333333333);
+}
+body .modal .modal-dialog .modal-content .modal-header {
+  background-color: #a8e7fa;
+}
+body .modal .modal-dialog .modal-content .modal-body .desc {
+  font-size: 17px;
+}
+body .modal .modal-dialog .modal-content .modal-body .personality {
+  width: 150px;
+  height: 150px;
+  border-radius: 50% 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+body .menu {
+  height: auto;
+}
+body .menu .dip-name1 {
+  font-size: 33px;
+  z-index: 10;
+  color: #ffffff;
+  position: absolute;
+  top: 180px;
+}
+body .menu .student-png {
+  width: 160px;
+  position: absolute;
+  z-index: 10;
+  top: 80px;
+}
+body .menu .grid {
+  position: absolute;
+  z-index: 4;
+  width: 86%;
+  background: rgb(23, 51, 92);
+  color: #666666;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  top: 250px;
+  height: auto;
+}
+body .menu .grid .dip-name2 {
+  font-size: 23px;
+  z-index: 4;
+  color: #ffffff;
+}
+body .menu .grid .grid-body {
+  padding: 15px 20px 15px 20px;
+  font-size: 0.9em;
+  line-height: 1.9em;
+  color: #ffffff;
+}
+body .menu .grid .grid-body .card-body .n-form {
+  margin-top: 0.5rem;
+}
+body .menu .grid .grid-body .card-body .n-form::-moz-placeholder {
+  font-size: 12px;
+  opacity: 0.5;
+  color: rgb(255, 255, 255);
+}
+body .menu .grid .grid-body .card-body .n-form::placeholder {
+  font-size: 12px;
+  opacity: 0.5;
+  color: rgb(255, 255, 255);
+}
+body .menu .grid .grid-body .card-body .filter-ul .filter-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+body .menu .grid .grid-body .card-body .filter-ul .filter-items .n-a {
+  text-decoration: none;
+  font-size: 13px;
+  color: #ffffff;
+}
+body .menu .grid .grid-body .fa {
+  font-size: 17px;
+  color: #ffffff;
+}
+body .menu .grid .grid-body .wrapper {
+  width: 200px;
+  padding: 20px;
+  height: 150px;
+}
+body .menu .search .table {
+  width: 100%;
+}
+body .menu .search .table tbody {
+  position: relative;
+  display: block;
+  overflow-y: scroll;
+  max-height: 150vh;
+}
+body .menu .search .table ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+body .menu .search .table ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+body .menu .search .table ::-webkit-scrollbar-thumb {
+  background: rgb(0, 132, 255);
+  border-radius: 4px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+body .menu .search .table ::-webkit-scrollbar-thumb:hover {
+  background: #0021b3;
+}
+body .menu .search .table tr {
+  width: 100%;
+  table-layout: fixed;
+  display: inline-table;
+  color: #ffffff;
+  height: 70px;
+}
+body .menu .search .table tr:hover {
+  cursor: pointer;
+}
+body .menu .search .table td, body .menu .search .table th {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .table thead {
+    display: none;
+  }
+  .table, .table tbody, .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    margin-bottom: 15px;
+  }
+  .table td {
+    text-align: right;
+    padding-left: 50%;
+  }
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+@media (min-width: 768px) and (max-width: 1140px) {
+  td {
+    font-size: 12px;
+  }
+  th {
+    font-size: 12px;
+  }
+}/*# sourceMappingURL=style.css.map */

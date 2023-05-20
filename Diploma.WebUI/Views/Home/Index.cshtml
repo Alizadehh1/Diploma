@@ -1,0 +1,208 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top " aria-label="Offcanvas navbar large">
+    <div class="container d-flex align-items-center" style="height: 60px;">
+        <a class="navbar-brand " href="#"> <img src="	https://www.freeiconspng.com/thumbs/graduation-cap/high-resolution-graduation-cap-png-icon-17.png" alt="Logo" width="50" height="44"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end " style="background-color: rgb(52,72,103);" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbar2Label"> <a class="navbar-brand " href="#"> <img src="	https://www.freeiconspng.com/thumbs/graduation-cap/high-resolution-graduation-cap-png-icon-17.png" alt="Logo" width="50" height="44"></a></h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <button onclick="cikisEt()">Çix</button>
+                <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- <img style="width: 60px; height: 60px;"  src="https://www.freeiconspng.com/thumbs/graduation-cap/high-resolution-graduation-cap-png-icon-17.png" alt="Diploma" width="30" height="24"> -->
+
+<div class="filter"></div>
+
+<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered  modal-lg ">
+        <div class="modal-content " id="modal">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Ətraflı Məlumat</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="height: 300px;">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<section class="menu d-flex justify-content-center ">
+    <img class="student-png" src="~/assets/images/diploma-icon-10244.png" alt="">
+    <h1 class="dip-name1 text-center">Diplom işi</h1>
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="grid search mt-5">
+                <div class="col d-flex justify-content-center "><h1 class="dip-name2 my-3">Diplom işlərinin siyahısı</h1></div>
+
+                <div class="grid-body">
+                    <div class="row ">
+                        <div class="col-md-3 mb-3 d-flex justify-content-start flex-column ">
+                            <h4 class="grid-title"><i class="fa fa-filter"></i> Filters</h4>
+
+                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Universitet
+                            </a>
+                            <div class="collapse" id="collapseExample1">
+                                <div class="card card-body border-0 " style="background-color: transparent ;color: #fff; ">
+
+                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
+
+                                    <hr class="m-0 p-0 border-bottom border-white">
+                                    <ul class="filter-ul p-0">
+                                        @foreach (var university in Model.Universities)
+                                        {
+                                            <li class="filter-items">
+                                                <a class="n-a" href="#">@university.Name</a><input class="form-check-input ucheck" onclick="myFunction6(this)" type="checkbox" id="flexCheckDefault">
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Kafedra
+                            </a>
+                            <div class="collapse" id="collapseExample5">
+                                <div class="card card-body border-0" style="background-color: transparent;">
+                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
+                                    <hr class="m-0 p-0 border-bottom border-white">
+                                    <ul class="filter-ul p-0">
+                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input kcheck" onclick="myFunction2(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input kcheck" onclick="myFunction2(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input kcheck" onclick="myFunction2(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Fakültə
+                            </a>
+                            <div class="collapse" id="collapseExample2">
+                                <div class="card card-body border-0" style="background-color: transparent; ">
+                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
+                                    <hr class="m-0 p-0 border-bottom border-white">
+                                    <ul class="filter-ul p-0">
+                                        @foreach (var faculty in Model.Faculties)
+                                        {
+                                            <li class="filter-items">
+                                                <a class="n-a" href="#">@faculty.Name</a><input class="form-check-input fcheck" onclick="myFunction5(this)" type="checkbox" id="flexCheckDefault">
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                İxtisas
+                            </a>
+                            <div class="collapse" id="collapseExample3">
+                                <div class="card card-body border-0" style="background-color: transparent;">
+                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
+
+                                    <hr class="m-0 p-0 border-bottom border-white">
+                                    <ul class="filter-ul p-0">
+                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input icheck" onclick="myFunction3(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input icheck" onclick="myFunction3(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input icheck" onclick="myFunction3(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Rəhbər
+                            </a>
+                            <div class="collapse" id="collapseExample4">
+                                <div class="card card-body border-0" style="background-color: transparent;">
+                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
+
+                                    <hr class="m-0 p-0 border-bottom border-white">
+                                    <ul class="filter-ul p-0">
+                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input rcheck " onclick="myFunction4(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input rcheck" onclick="myFunction4(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input rcheck" onclick="myFunction4(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-9">
+                            <form class="d-flex" role="search">
+                                <input id="search-input" class="form-control me-2" type="search" placeholder="Məlumatı daxil edin" aria-label="Search">
+
+                            </form>
+
+
+                            <div class="table-responsive mt-5">
+
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No:</th>
+                                            <th scope="col">Diplom işi</th>
+                                            <th scope="col">Kateqoriya</th>
+                                            <th scope="col">Rəhbər</th>
+                                            <th scope="col">Ətraflı</th>
+                                            <th scope="col">Seç</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="" id="search-results">
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 d-flex align-items-center justify-content-end gap-3">
+                            <button type="button" id="1" class="btn btn-outline-success">Save</button>
+                            <button type="button" id="2" class="btn btn-outline-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section css{
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/assets/styles/main.css">
+}
