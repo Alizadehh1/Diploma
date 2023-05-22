@@ -28,8 +28,17 @@ namespace Diploma.WebUI.Controllers
             viewModel.Universities = await db.Universities
                 .Where(u => u.DeletedById == null)
                 .ToListAsync();
+
             viewModel.Faculties = await db.Faculties
                 .Where(f => f.DeletedById == null && f.University.DeletedById==null)
+                .ToListAsync();
+
+            viewModel.Departments = await db.Departments
+                .Where(f => f.DeletedById == null && f.Faculty.DeletedById == null && f.Faculty.University.DeletedById == null)
+                .ToListAsync();
+
+            viewModel.Specializations = await db.Specializations
+                .Where(f => f.DeletedById == null && f.Department.DeletedById == null && f.Department.Faculty.DeletedById == null && f.Department.Faculty.University.DeletedById == null)
                 .ToListAsync();
 
             return View(viewModel);

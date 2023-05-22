@@ -103,9 +103,10 @@
                                     <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
                                     <hr class="m-0 p-0 border-bottom border-white">
                                     <ul class="filter-ul p-0">
-                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input kcheck" onclick="myFunction2(this)" type="checkbox" value="" id="flexCheckDefault"></li>
-                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input kcheck" onclick="myFunction2(this)" type="checkbox" value="" id="flexCheckDefault"></li>
-                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input kcheck" onclick="myFunction2(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                        @foreach (var department in Model.Departments)
+                                        {
+                                            <li class="filter-items"><a class="n-a" href="#">@department.Name</a><input class="form-check-input kcheck" onclick="myFunction2(this)" type="checkbox" id="flexCheckDefault"></li>
+                                        }
                                     </ul>
                                 </div>
                             </div>
@@ -133,12 +134,12 @@
                             <div class="collapse" id="collapseExample3">
                                 <div class="card card-body border-0" style="background-color: transparent;">
                                     <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
-
                                     <hr class="m-0 p-0 border-bottom border-white">
                                     <ul class="filter-ul p-0">
-                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input icheck" onclick="myFunction3(this)" type="checkbox" value="" id="flexCheckDefault"></li>
-                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input icheck" onclick="myFunction3(this)" type="checkbox" value="" id="flexCheckDefault"></li>
-                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input icheck" onclick="myFunction3(this)" type="checkbox" value="" id="flexCheckDefault"></li>
+                                        @foreach (var specialization in Model.Specializations)
+                                        {
+                                            <li class="filter-items"><a class="n-a" href="#">@specialization.Name</a><input class="form-check-input icheck" onclick="myFunction3(this)" type="checkbox" id="flexCheckDefault"></li>
+                                        }
                                     </ul>
                                 </div>
                             </div>

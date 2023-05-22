@@ -7155,11 +7155,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alide\\OneDrive\\Desktop\\Diploma\\Diploma Solution\\Diploma.WebUI\\Diploma.WebUI.csproj",
+      "projectUniqueName": "C:\\Users\\alide\\OneDrive\\Desktop\\Diploma\\Diploma.WebUI\\Diploma.WebUI.csproj",
       "projectName": "Diploma.WebUI",
-      "projectPath": "C:\\Users\\alide\\OneDrive\\Desktop\\Diploma\\Diploma Solution\\Diploma.WebUI\\Diploma.WebUI.csproj",
+      "projectPath": "C:\\Users\\alide\\OneDrive\\Desktop\\Diploma\\Diploma.WebUI\\Diploma.WebUI.csproj",
       "packagesPath": "C:\\Users\\alide\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alide\\OneDrive\\Desktop\\Diploma\\Diploma Solution\\Diploma.WebUI\\obj\\",
+      "outputPath": "C:\\Users\\alide\\OneDrive\\Desktop\\Diploma\\Diploma.WebUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alide\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -37,6 +37,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
 
             var entity = await db.Faculties
+                .Include(f=>f.University)
                 .FirstOrDefaultAsync(u => u.DeletedById == null && u.Id == id);
 
             return View(entity);
@@ -44,7 +45,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            ViewData["UniversityId"] = new SelectList(db.Faculties.Where(i => i.DeletedById == null), "Id", "Name");
+            ViewData["UniversityId"] = new SelectList(db.Universities.Where(i => i.DeletedById == null), "Id", "Name");
 
             return View();
         }
@@ -73,6 +74,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["UniversityId"] = new SelectList(db.Universities.Where(i => i.DeletedById == null), "Id", "Name", faculty.UniversityId);
             return View(faculty);
         }
 

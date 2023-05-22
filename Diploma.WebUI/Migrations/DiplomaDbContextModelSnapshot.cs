@@ -46,6 +46,38 @@ namespace Diploma.WebUI.Migrations
                     b.ToTable("AcademicDegrees");
                 });
 
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Department", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacultyId");
+
+                    b.ToTable("Departments");
+                });
+
             modelBuilder.Entity("Diploma.WebUI.Models.Entities.Faculty", b =>
                 {
                     b.Property<int>("Id")
@@ -132,6 +164,38 @@ namespace Diploma.WebUI.Migrations
                     b.ToTable("Sections");
                 });
 
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Specialization", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Specializations");
+                });
+
             modelBuilder.Entity("Diploma.WebUI.Models.Entities.Status", b =>
                 {
                     b.Property<int>("Id")
@@ -186,6 +250,17 @@ namespace Diploma.WebUI.Migrations
                     b.ToTable("Universities");
                 });
 
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Department", b =>
+                {
+                    b.HasOne("Diploma.WebUI.Models.Entities.Faculty", "Faculty")
+                        .WithMany()
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Faculty");
+                });
+
             modelBuilder.Entity("Diploma.WebUI.Models.Entities.Faculty", b =>
                 {
                     b.HasOne("Diploma.WebUI.Models.Entities.University", "University")
@@ -195,6 +270,17 @@ namespace Diploma.WebUI.Migrations
                         .IsRequired();
 
                     b.Navigation("University");
+                });
+
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Specialization", b =>
+                {
+                    b.HasOne("Diploma.WebUI.Models.Entities.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
                 });
 #pragma warning restore 612, 618
         }

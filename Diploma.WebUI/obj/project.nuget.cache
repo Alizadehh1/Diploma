@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NyUxoVXO+0l/P3u5SnDxSO3ep1RsOgR4rDRP+Y7PAPigSf2T83m0jLe7FKxEwkATNLLbvLS9HSSZSq7D28/DwQ==",
+  "dgSpecHash": "ToTvHVmOcJNDIkTCS9QTo/wyJJ43VPKJzrletMtyMdXYcDX0Xom+CBsg5c+Iw/C/E1qDgLLk/1wJfJUUGpkRaA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alide\\OneDrive\\Desktop\\Diploma\\Diploma Solution\\Diploma.WebUI\\Diploma.WebUI.csproj",
+  "projectFilePath": "C:\\Users\\alide\\OneDrive\\Desktop\\Diploma\\Diploma.WebUI\\Diploma.WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alide\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\alide\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
