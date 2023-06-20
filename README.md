@@ -1,2 +1,1 @@
-Azerbaijan State Oil and Industry University Startup
-Diploma
+Azerbaijan State Oil and Industry University Startup Project
