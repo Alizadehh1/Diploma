@@ -42,7 +42,12 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
                 .Include(f=>f.Department)
                 .ThenInclude(f=>f.Faculty)
                 .ThenInclude(F=>F.University)
-                .FirstOrDefaultAsync(f => f.DeletedById == null && f.Department.DeletedById == null && f.Department.Faculty.DeletedById == null && f.Department.Faculty.University.DeletedById == null && f.Id == id);
+                .FirstOrDefaultAsync(f => f.Id == id && f.DeletedById == null && f.Department.DeletedById == null && f.Department.Faculty.DeletedById == null && f.Department.Faculty.University.DeletedById == null && f.Id == id);
+
+            if (entity == null)
+            {
+                return NotFound();
+            }
 
             return View(entity);
         }
@@ -73,7 +78,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var specialization = await db.Specializations.FirstOrDefaultAsync(f => f.DeletedById == null && f.Department.DeletedById == null && f.Department.Faculty.DeletedById == null && f.Department.Faculty.University.DeletedById == null);
+            var specialization = await db.Specializations.FirstOrDefaultAsync(f => f.Id==id && f.DeletedById == null && f.Department.DeletedById == null && f.Department.Faculty.DeletedById == null && f.Department.Faculty.University.DeletedById == null);
             if (specialization == null)
             {
                 return NotFound();

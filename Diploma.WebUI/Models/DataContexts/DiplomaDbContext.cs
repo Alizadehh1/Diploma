@@ -22,5 +22,6 @@ namespace Diploma.WebUI.Models.DataContexts
         public DbSet<Faculty> Faculties { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Specialization> Specializations { get; set; }
+        public DbSet<Group> Groups { get; set; }
     }
 }

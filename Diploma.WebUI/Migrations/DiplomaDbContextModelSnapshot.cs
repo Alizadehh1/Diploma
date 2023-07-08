@@ -110,6 +110,43 @@ namespace Diploma.WebUI.Migrations
                     b.ToTable("Faculties");
                 });
 
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SectionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SpecializationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SectionId");
+
+                    b.HasIndex("SpecializationId");
+
+                    b.ToTable("Groups");
+                });
+
             modelBuilder.Entity("Diploma.WebUI.Models.Entities.ScientificWork", b =>
                 {
                     b.Property<int>("Id")
@@ -270,6 +307,25 @@ namespace Diploma.WebUI.Migrations
                         .IsRequired();
 
                     b.Navigation("University");
+                });
+
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Group", b =>
+                {
+                    b.HasOne("Diploma.WebUI.Models.Entities.Section", "Section")
+                        .WithMany()
+                        .HasForeignKey("SectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Diploma.WebUI.Models.Entities.Specialization", "Specialization")
+                        .WithMany()
+                        .HasForeignKey("SpecializationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Section");
+
+                    b.Navigation("Specialization");
                 });
 
             modelBuilder.Entity("Diploma.WebUI.Models.Entities.Specialization", b =>
