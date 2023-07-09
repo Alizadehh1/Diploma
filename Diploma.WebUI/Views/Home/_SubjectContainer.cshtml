@@ -1,0 +1,15 @@
+﻿@model List<Subject>
+
+@foreach (var subject in Model)
+{
+    <tr>
+        <td id="subjectİd" data-label="No:">@subject.Id</td>
+        <td id="subjectName" data-label="Diplom işi">@subject.Name</td>
+        <td id="subjectAuthor" data-label="Rəhbər">@(subject.Author.Name + " " + subject.Author.Surname)</td>
+        <td class="bs-checkbox" data-label="Seç">
+            <a onclick="selectEntity(event,@subject.Id, '@subject.Name')">
+                <i class="fa-solid fa-check" style="color: #00ff33;"></i>
+            </a>
+        </td>
+    </tr>
+}

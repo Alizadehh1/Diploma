@@ -1,5 +1,6 @@
 ﻿using Diploma.WebUI.Models.DataContexts;
 using Diploma.WebUI.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
         {
             this.db = db;
         }
+        [Authorize(Policy = "admin.groups.index")]
         public async Task<IActionResult> Index()
         {
             var model = await db.Groups
@@ -32,7 +34,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(model);
         }
-
+        [Authorize(Policy = "admin.groups.details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -55,7 +57,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(entity);
         }
-
+        [Authorize(Policy = "admin.groups.create")]
         public IActionResult Create()
         {
             ViewData["SpecializationId"] = new SelectList(db.Specializations.Include(f => f.Department)
@@ -68,6 +70,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.groups.create")]
         public async Task<IActionResult> Create(Group group)
         {
             if (ModelState.IsValid)
@@ -78,7 +81,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(group);
         }
-
+        [Authorize(Policy = "admin.groups.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -107,7 +110,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Policy = "admin.universities.edit")]
+        [Authorize(Policy = "admin.groups.edit")]
         public async Task<IActionResult> Edit(int id, Group group)
         {
             if (id != group.Id)
@@ -137,7 +140,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(group);
         }
-        //[Authorize(Policy = "admin.universities.delete")]
+        [Authorize(Policy = "admin.groups.delete")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var group = await db.Groups

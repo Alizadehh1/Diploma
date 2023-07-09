@@ -1,10 +1,12 @@
-﻿using Diploma.WebUI.Models.DataContexts;
+﻿using Diploma.WebUI.AppCode.Extensions;
+using Diploma.WebUI.Models.DataContexts;
 using Diploma.WebUI.Models.Entities.Membership;
 using Diploma.WebUI.Models.FormModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -32,6 +34,7 @@ namespace Diploma.WebUI.Controllers
             this.ctx = ctx;
         }
         [AllowAnonymous]
+        [Route("/signin.html")]
         public IActionResult SignIn()
         {
             return View();
@@ -41,8 +44,18 @@ namespace Diploma.WebUI.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction(nameof(SignIn));
         }
+        public async Task<IActionResult> Profile()
+        {
+            var user = await db.Authors
+                .Include(a=>a.DiplomaUser)
+                .Include(a=>a.AcademicDegree)
+                .FirstOrDefaultAsync(a => a.DiplomaUserId == Convert.ToInt32(User.GetUserId()));
+
+            return View(user);
+        }
         [HttpPost]
         [AllowAnonymous]
+        [Route("/signin.html")]
         public async Task<IActionResult> SignIn(LoginFormModel user)
         {
             if (ModelState.IsValid)
@@ -100,6 +113,8 @@ namespace Diploma.WebUI.Controllers
 
                 if (result.Succeeded)
                 {
+                    ViewBag.Message = "Təbriklər qeydiyyat tamamlandı.";
+
                     return View();
                 }
 

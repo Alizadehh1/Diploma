@@ -33,8 +33,29 @@ using Diploma.WebUI.Models.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\gusta\OneDrive\Desktop\Diploma\Diploma.WebUI\Views\_ViewImports.cshtml"
+using Diploma.WebUI.Models.FormModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\gusta\OneDrive\Desktop\Diploma\Diploma.WebUI\Views\_ViewImports.cshtml"
+using Diploma.WebUI.Models.Entities.Membership;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\gusta\OneDrive\Desktop\Diploma\Diploma.WebUI\Views\_ViewImports.cshtml"
+using Diploma.WebUI.Models.Entities;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cf1f84df08d6c169c2ff4f7dcc0a09d91815f844", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cf07fe1e9be5bac76b1974758083a30d21862891", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

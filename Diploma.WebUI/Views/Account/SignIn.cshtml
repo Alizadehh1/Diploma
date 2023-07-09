@@ -1,4 +1,4 @@
-﻿
+﻿@model LoginFormModel
 @{
     ViewData["Title"] = "SignIn";
 }
@@ -15,11 +15,27 @@
                 <h4>Giriş</h4>
                 <img src="https://www.freeiconspng.com/thumbs/graduation-cap/high-resolution-graduation-cap-png-icon-17.png" alt="">
             </div>
-            <div class="inputs">
-                <input type="text" id="email" placeholder="Emailinizi daxil edin:">
-                <input type="password" id="sifre" placeholder="Şifrənizi daxil edin:">
-            </div>
-            <a>Daxil Et</a>
+            @if (!Html.ViewData.ModelState.IsValid)
+            {
+                <div class="form-group mb-3">
+                    <div asp-validation-summary="All" class="alert alert-danger text-white">
+                    </div>
+                </div>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+            {
+                <div class="form-group mb-3">
+                    <div class="alert alert-danger text-white">
+                        @ViewBag.Message
+                    </div>
+                </div>
+            }
+            <form asp-action="SignIn" method="post" class="inputs">
+                <input asp-for="Email" id="email" placeholder="Emailinizi daxil edin:">
+                <input asp-for="Password" id="sifre" placeholder="Şifrənizi daxil edin:">
+                <button type="submit">Daxil Et</button>
+            </form>
         </div>
     </div>
 </section>

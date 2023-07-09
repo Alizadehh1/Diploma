@@ -19,8 +19,22 @@ using Diploma.WebUI.Models.Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\gusta\OneDrive\Desktop\Diploma\Diploma.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using Diploma.WebUI.Models.Entities.Membership;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\gusta\OneDrive\Desktop\Diploma\Diploma.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using Diploma.WebUI.AppCode.Extensions;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Areas/Admin/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0c9044c541846521a8dc4e8f5ae4d498a6a49162", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"afd886a7e76cad3434619afdb6201e926be298c1", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

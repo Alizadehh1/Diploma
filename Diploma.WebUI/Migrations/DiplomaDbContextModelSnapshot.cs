@@ -46,6 +46,61 @@ namespace Diploma.WebUI.Migrations
                     b.ToTable("AcademicDegrees");
                 });
 
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Author", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AcademicDegreeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Area")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Biography")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DiplomaUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Education")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FatherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AcademicDegreeId");
+
+                    b.HasIndex("DiplomaUserId");
+
+                    b.ToTable("Authors");
+                });
+
             modelBuilder.Entity("Diploma.WebUI.Models.Entities.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -457,6 +512,89 @@ namespace Diploma.WebUI.Migrations
                     b.ToTable("Statuses");
                 });
 
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DiplomaUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FatherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DiplomaUserId");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Subjects");
+                });
+
             modelBuilder.Entity("Diploma.WebUI.Models.Entities.University", b =>
                 {
                     b.Property<int>("Id")
@@ -482,6 +620,25 @@ namespace Diploma.WebUI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Universities");
+                });
+
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Author", b =>
+                {
+                    b.HasOne("Diploma.WebUI.Models.Entities.AcademicDegree", "AcademicDegree")
+                        .WithMany()
+                        .HasForeignKey("AcademicDegreeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Diploma.WebUI.Models.Entities.Membership.DiplomaUser", "DiplomaUser")
+                        .WithMany()
+                        .HasForeignKey("DiplomaUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AcademicDegree");
+
+                    b.Navigation("DiplomaUser");
                 });
 
             modelBuilder.Entity("Diploma.WebUI.Models.Entities.Department", b =>
@@ -585,6 +742,42 @@ namespace Diploma.WebUI.Migrations
                         .IsRequired();
 
                     b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Student", b =>
+                {
+                    b.HasOne("Diploma.WebUI.Models.Entities.Membership.DiplomaUser", "DiplomaUser")
+                        .WithMany()
+                        .HasForeignKey("DiplomaUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Diploma.WebUI.Models.Entities.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Diploma.WebUI.Models.Entities.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId");
+
+                    b.Navigation("DiplomaUser");
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("Diploma.WebUI.Models.Entities.Subject", b =>
+                {
+                    b.HasOne("Diploma.WebUI.Models.Entities.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
                 });
 #pragma warning restore 612, 618
         }

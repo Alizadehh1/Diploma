@@ -1,5 +1,6 @@
 ﻿using Diploma.WebUI.Models.DataContexts;
 using Diploma.WebUI.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
         {
             this.db = db;
         }
+        [Authorize(Policy = "admin.departments.index")]
         public async Task<IActionResult> Index()
         {
             var model = await db.Departments
@@ -29,7 +31,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(model);
         }
-
+        [Authorize(Policy = "admin.departments.details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,7 +46,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(entity);
         }
-
+        [Authorize(Policy = "admin.departments.create")]
         public IActionResult Create()
         {
             ViewData["FacultyId"] = new SelectList(db.Faculties.Where(f => f.DeletedById == null && f.University.DeletedById == null).Include(f => f.University), "Id", "Name");
@@ -53,6 +55,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.departments.create")]
         public async Task<IActionResult> Create(Department department)
         {
             if (ModelState.IsValid)
@@ -63,7 +66,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(department);
         }
-
+        [Authorize(Policy = "admin.departments.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,7 +85,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Policy = "admin.universities.edit")]
+        [Authorize(Policy = "admin.departments.edit")]
         public async Task<IActionResult> Edit(int id, Department department)
         {
             if (id != department.Id)
@@ -112,7 +115,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(department);
         }
-        //[Authorize(Policy = "admin.universities.delete")]
+        [Authorize(Policy = "admin.departments.delete")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var color = await db.Departments

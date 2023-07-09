@@ -1,4 +1,4 @@
-﻿
+﻿@model RegisterFormModel
 @{
     ViewData["Title"] = "Register";
 }
@@ -16,17 +16,43 @@
                 <h4>Qeydiyyat</h4>
                 <img src="https://www.freeiconspng.com/thumbs/graduation-cap/high-resolution-graduation-cap-png-icon-17.png" alt="">
             </div>
-            <div class="inputs">
-                <input type="text" placeholder="Adınızı daxil edin:">
-                <input type="text" placeholder="Soyadınızı daxil edin:">
-                <input type="text" placeholder="Ata adını daxil edin:">
-                <input type="number" placeholder="Təvəllüdünüzü daxil edin:">
-                <input type="text" placeholder="Fin kodunuzu daxil edin:">
-                <input type="text" placeholder="Universiteti daxil edin:">
-                <input type="text" placeholder="Fakultəni daxil edin:">
-                <input type="text" placeholder="Kafedranı daxil edin:">
-            </div>
-            <a>Daxil Et</a>
+            @if (!Html.ViewData.ModelState.IsValid)
+            {
+                <div class="form-group mb-3">
+                    <div asp-validation-summary="All" class="alert alert-danger text-white">
+                    </div>
+                </div>
+            }
+            @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+            {
+                if (!Html.ViewData.ModelState.IsValid)
+                {
+                    <div class="form-group mb-3">
+                        <div class="alert alert-danger text-white">
+                            @ViewBag.Message
+                        </div>
+                    </div>
+                }
+                <div class="form-group mb-3">
+                    <div class="alert alert-success text-white">
+                        @ViewBag.Message
+                    </div>
+                </div>
+            }
+            <form method="post" asp-action="Register" class="inputs">
+                <input asp-for="Email" placeholder="Email daxil edin *">
+                <input asp-for="Password" placeholder="Parol daxil edin *">
+                <input asp-for="ConfirmPassword" placeholder="Təkrar Parol daxil edin *">
+                <button type="submit">Qeydiyyat et</button>
+                @*<input type="text" placeholder="Adınızı daxil edin:">
+                    <input type="text" placeholder="Soyadınızı daxil edin:">
+                    <input type="text" placeholder="Ata adını daxil edin:">
+                    <input type="number" placeholder="Təvəllüdünüzü daxil edin:">
+                    <input type="text" placeholder="Fin kodunuzu daxil edin:">
+                    <input type="text" placeholder="Universiteti daxil edin:">
+                    <input type="text" placeholder="Fakultəni daxil edin:">
+                    <input type="text" placeholder="Kafedranı daxil edin:">*@
+            </form>
         </div>
     </div>
 </section>

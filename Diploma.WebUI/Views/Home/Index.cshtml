@@ -15,13 +15,13 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body " style="position: relative;">
-                <button class="logout" style="background-color: rgb(52, 72, 103); border-radius: 0.5rem; position: absolute; left: 90%; top: 20%;" onclick="cikisEt()"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></button>
+                <a class="logout" style="background-color: rgb(52, 72, 103); border-radius: 0.5rem; position: absolute; left: 90%; top: 20%;cursor:pointer;" asp-action="profile" asp-controller="account"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></a>
                 <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/index.htm">Şəxsi Kabinetə Giriş</a>
                     </li>
                 </ul>
-            </div>
+            </div>f
         </div>
     </div>
 </nav>
@@ -53,95 +53,7 @@
                 <div class="col d-flex justify-content-center "><h1 class="dip-name2 my-3">Diplom işlərinin siyahısı</h1></div>
 
                 <div class="grid-body">
-                    <div class="row ">
-                        <div class="col-md-3 mb-3 d-flex justify-content-start flex-column ">
-                            <h4 class="grid-title"><i class="fa fa-filter"></i> Filters</h4>
-
-                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Universitet
-                            </a>
-                            <div class="collapse" id="collapseExample1">
-                                <div class="card card-body border-0 " style="background-color: transparent ;color: #fff; ">
-
-                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
-
-                                    <hr class="m-0 p-0 border-bottom border-white">
-                                    <ul class="filter-ul p-0">
-                                        @foreach (var university in Model.Universities)
-                                        {
-                                            <li class="filter-items">
-                                                <a class="n-a" href="#">@university.Name</a><input class="form-check-input ucheck" onclick="myFunction6(this)" type="checkbox" id="flexCheckDefault">
-                                            </li>
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Kafedra
-                            </a>
-                            <div class="collapse" id="collapseExample5">
-                                <div class="card card-body border-0" style="background-color: transparent;">
-                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
-                                    <hr class="m-0 p-0 border-bottom border-white">
-                                    <ul class="filter-ul p-0">
-                                        @foreach (var department in Model.Departments)
-                                        {
-                                            <li class="filter-items"><a class="n-a" href="#">@department.Name</a><input class="form-check-input kcheck" onclick="myFunction2(this)" type="checkbox" id="flexCheckDefault"></li>
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Fakültə
-                            </a>
-                            <div class="collapse" id="collapseExample2">
-                                <div class="card card-body border-0" style="background-color: transparent; ">
-                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
-                                    <hr class="m-0 p-0 border-bottom border-white">
-                                    <ul class="filter-ul p-0">
-                                        @foreach (var faculty in Model.Faculties)
-                                        {
-                                            <li class="filter-items">
-                                                <a class="n-a" href="#">@faculty.Name</a><input class="form-check-input fcheck" onclick="myFunction5(this)" type="checkbox" id="flexCheckDefault">
-                                            </li>
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                İxtisas
-                            </a>
-                            <div class="collapse" id="collapseExample3">
-                                <div class="card card-body border-0" style="background-color: transparent;">
-                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
-                                    <hr class="m-0 p-0 border-bottom border-white">
-                                    <ul class="filter-ul p-0">
-                                        @foreach (var specialization in Model.Specializations)
-                                        {
-                                            <li class="filter-items"><a class="n-a" href="#">@specialization.Name</a><input class="form-check-input icheck" onclick="myFunction3(this)" type="checkbox" id="flexCheckDefault"></li>
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                            <a class="btn text-start text-white" data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Rəhbər
-                            </a>
-                            <div class="collapse" id="collapseExample4">
-                                <div class="card card-body border-0" style="background-color: transparent;">
-                                    <input type="text" class="form-control form-control-sm border-0 bg-transparent n-form" placeholder="Məlumat daxil edin" style="color: #fff">
-
-                                    <hr class="m-0 p-0 border-bottom border-white">
-                                    <ul class="filter-ul p-0">
-                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input rcheck " onclick="myFunction4(this)" type="checkbox" value="" id="flexCheckDefault"></li>
-                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input rcheck" onclick="myFunction4(this)" type="checkbox" value="" id="flexCheckDefault"></li>
-                                        <li class="filter-items"><a class="n-a" href="#">test</a>  <input class="form-check-input rcheck" onclick="myFunction4(this)" type="checkbox" value="" id="flexCheckDefault"></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div class="row justify-content-center">
                         <div class="col-md-9">
                             <form class="d-flex" role="search">
                                 <input id="search-input" class="form-control me-2" type="search" placeholder="Məlumatı daxil edin" aria-label="Search">
@@ -161,29 +73,10 @@
                                         </tr>
                                     </thead>
                                     <tbody class="" id="search-results">
-                                        <tr>
-                                            <td id="subjectİd" data-label="No:">1</td>
-                                            <td id="subjectName" data-label="Diplom işi">Süni intellektin əsasları</td>
-                                            <td id="subjectAuthor" data-label="Rəhbər">Axirə Sultanova</td>
-                                            <td class="bs-checkbox" data-label="Seç">
-                                                <input type="checkbox" onclick="myFunction1(this)" class="check" value="">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td id="subjectİd" data-label="No:">2</td>
-                                            <td id="subjectName" data-label="Diplom işi">Verilənlər Bazası</td>
-                                            <td id="subjectAuthor" data-label="Rəhbər">Jalə Ələkbərova</td>
-                                            <td class="bs-checkbox" data-label="Seç">
-                                                <input type="checkbox" onclick="myFunction1(this)" class="check" value="">
-                                            </td>
-                                        </tr>
+                                        <partial name="_SubjectContainer" model="@Model.Subjects" />
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="col-md-12 d-flex align-items-center justify-content-end gap-3">
-                            <button type="button" id="1" class="btn btn-outline-success">Save</button>
-                            <button type="button" id="2" class="btn btn-outline-danger">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -198,4 +91,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/assets/styles/main.css">
+    <link href="~/libs/toastr.js/toastr.css" rel="stylesheet" />
+    <link href="~/admin/files/assets/css/customize.css" rel="stylesheet" />
 }
+@section js{
+    <script src="~/libs/toastr.js/toastr.min.js"></script>
+    <script src="~/libs/select2/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        });
+    </script>
+    <script src="~/admin/files/assets/js/customize.js"></script>
+    <script src="~/libs/sweetalert/sweetalert.min.js"></script>
+    <script>
+        function selectEntity(ev, entityId, name) {
+            swal({
+                title: "Əminsən?",
+                text: `"${name}" secilecek, əminsən?`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: `@Url.Action("SelectSubject")/${entityId}`,
+                            type: 'post',
+                            success: function (response) {
+                                toastr.success("Uğurludur!", response.message)
+                            },
+                            error: function (response) {
+                                toastr["error"]("Unsuccessfully", "Secilme baş vermədi, yenidən yoxlayın!")
+                            }
+                        })
+                    }
+                });
+        }
+    </script>
+}
+

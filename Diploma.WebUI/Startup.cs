@@ -72,6 +72,15 @@ namespace Diploma.WebUI
                 cfg.Lockout.DefaultLockoutTimeSpan = new TimeSpan(0, 3, 0);
             });
 
+            services.ConfigureApplicationCookie(cfg =>
+            {
+                cfg.LoginPath = "/signin.html";
+                cfg.AccessDeniedPath = "/accessdenied.html";
+
+                cfg.ExpireTimeSpan = new TimeSpan(60, 0, 5, 0);
+                cfg.Cookie.Name = "Diploma";
+            });
+
             services.AddAuthentication();
             services.AddAuthorization(cfg =>
             {
@@ -109,7 +118,7 @@ namespace Diploma.WebUI
 
             app.UseRouting();
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(cfg =>

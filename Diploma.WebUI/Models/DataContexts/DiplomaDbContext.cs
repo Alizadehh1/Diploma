@@ -25,6 +25,10 @@ namespace Diploma.WebUI.Models.DataContexts
         public DbSet<Department> Departments { get; set; }
         public DbSet<Specialization> Specializations { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Student> Students { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

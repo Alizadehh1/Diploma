@@ -1,5 +1,6 @@
 ﻿using Diploma.WebUI.Models.DataContexts;
 using Diploma.WebUI.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,6 +19,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
         {
             this.db = db;
         }
+        [Authorize("admin.scientificWorks.index")]
         public async Task<IActionResult> Index()
         {
             var model = await db.ScientificWorks
@@ -26,7 +28,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(model);
         }
-
+        [Authorize("admin.scientificWorks.details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,7 +41,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(entity);
         }
-
+        [Authorize(Policy = "admin.scientificWorks.create")]
         public IActionResult Create()
         {
             return View();
@@ -47,7 +49,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Policy = "admin.ScientificWorks.create")]
+        [Authorize(Policy = "admin.scientificWorks.create")]
         public async Task<IActionResult> Create(ScientificWork ScientificWork)
         {
 
@@ -59,7 +61,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(ScientificWork);
         }
-        //[Authorize(Policy = "admin.ScientificWorks.edit")]
+        [Authorize(Policy = "admin.scientificWorks.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,7 +79,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Policy = "admin.ScientificWorks.edit")]
+        [Authorize(Policy = "admin.scientificWorks.edit")]
         public async Task<IActionResult> Edit(int id, ScientificWork ScientificWork)
         {
             if (id != ScientificWork.Id)
@@ -107,7 +109,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(ScientificWork);
         }
-        //[Authorize(Policy = "admin.ScientificWorks.delete")]
+        [Authorize(Policy = "admin.scientificWorks.delete")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var color = await db.ScientificWorks

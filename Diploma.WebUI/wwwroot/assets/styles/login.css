@@ -42,14 +42,14 @@
         margin-right: 20px;
     }
 
-.button {
+/*.button {
     position: relative;
     width: 100%;
     height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+}*/
 
 .point {
     transition-duration: s;
@@ -153,16 +153,17 @@
     color: white;
 }
 
-.card-front .inputs a {
+.card-front .inputs button {
     padding: 10px;
     background-color: #212a3e;
     text-decoration: none;
     color: #C4C3CA;
     border-radius: 0.25rem;
     cursor: pointer;
+    border: 1px solid black;
 }
 
-.inputs a:hover {
+.inputs button:hover {
     transform: translateX(1.2);
 }
 
@@ -188,9 +189,7 @@ input[type="text"], input[type="password"] {
     transition: 0.2s ease-in;
 }
 
-.submit {
-    border: 1px solid black;
-}
+
 
 .card-front a {
     border-radius: 0.5rem;
@@ -207,7 +206,7 @@ input[type="text"], input[type="password"] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 60%;
     height: 480px;
     border: 1px solid black;
@@ -219,6 +218,8 @@ input[type="text"], input[type="password"] {
 
     .card-back .text-center {
         border: 1px solid whitr;
+
+
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -252,7 +253,9 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.card-back a {
+.card-back button {
+    cursor:pointer;
+    border:0px;
     border-radius: 0.5rem;
     padding-top: 10px;
     padding-bottom: 10px;

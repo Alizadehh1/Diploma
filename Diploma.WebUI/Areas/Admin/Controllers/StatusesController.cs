@@ -1,5 +1,6 @@
 ﻿using Diploma.WebUI.Models.DataContexts;
 using Diploma.WebUI.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,6 +19,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
         {
             this.db = db;
         }
+        [Authorize("admin.statuses.index")]
         public async Task<IActionResult> Index()
         {
             var model = await db.Statuses
@@ -26,7 +28,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(model);
         }
-
+        [Authorize("admin.statuses.details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,7 +41,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(entity);
         }
-
+        [Authorize("admin.statuses.create")]
         public IActionResult Create()
         {
             return View();
@@ -47,7 +49,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Policy = "admin.Statuses.create")]
+        [Authorize(Policy = "admin.statuses.create")]
         public async Task<IActionResult> Create(Status Status)
         {
             if (ModelState.IsValid)
@@ -58,7 +60,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(Status);
         }
-        //[Authorize(Policy = "admin.Statuses.edit")]
+        [Authorize(Policy = "admin.statuses.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,7 +78,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Policy = "admin.Statuses.edit")]
+        [Authorize(Policy = "admin.statuses.edit")]
         public async Task<IActionResult> Edit(int id, Status Status)
         {
             if (id != Status.Id)
@@ -106,7 +108,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(Status);
         }
-        //[Authorize(Policy = "admin.Statuses.delete")]
+        [Authorize(Policy = "admin.statuses.delete")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var color = await db.Statuses

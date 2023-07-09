@@ -1,5 +1,6 @@
 ﻿using Diploma.WebUI.Models.DataContexts;
 using Diploma.WebUI.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
         {
             this.db = db;
         }
+        [Authorize(Policy = "admin.faculties.index")]
         public async Task<IActionResult> Index()
         {
             var model = await db.Faculties
@@ -28,7 +30,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(model);
         }
-
+        [Authorize(Policy = "admin.faculties.details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,7 +44,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
             return View(entity);
         }
-
+        [Authorize(Policy = "admin.faculties.create")]
         public IActionResult Create()
         {
             ViewData["UniversityId"] = new SelectList(db.Universities.Where(i => i.DeletedById == null), "Id", "Name");
@@ -51,6 +53,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.faculties.create")]
         public async Task<IActionResult> Create(Faculty faculty)
         {
             if (ModelState.IsValid)
@@ -61,7 +64,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(faculty);
         }
-
+        [Authorize(Policy = "admin.faculties.edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,7 +83,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Authorize(Policy = "admin.universities.edit")]
+        [Authorize(Policy = "admin.faculties.edit")]
         public async Task<IActionResult> Edit(int id, Faculty faculty)
         {
             if (id != faculty.Id)
@@ -110,7 +113,7 @@ namespace Diploma.WebUI.Areas.Admin.Controllers
             }
             return View(faculty);
         }
-        //[Authorize(Policy = "admin.universities.delete")]
+        [Authorize(Policy = "admin.faculties.delete")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var color = await db.Faculties
