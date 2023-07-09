@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+<section class="main">
+    <img id="img" src="https://www.student-complete.com/public/assets/images/banner01.jpg" alt="">
+    <div class="main-box">
+        <header class="header d-flex1">
+            <a id="login" asp-action="SignIn">Giriş</a>
+            <a style="color: green;" id="register" asp-action="register">Qeydiyyat</a>
+        </header>
+
+        <div class="card-back">
+            <div class="text-center">
+                <h4>Qeydiyyat</h4>
+                <img src="https://www.freeiconspng.com/thumbs/graduation-cap/high-resolution-graduation-cap-png-icon-17.png" alt="">
+            </div>
+            <div class="inputs">
+                <input type="text" placeholder="Adınızı daxil edin:">
+                <input type="text" placeholder="Soyadınızı daxil edin:">
+                <input type="text" placeholder="Ata adını daxil edin:">
+                <input type="number" placeholder="Təvəllüdünüzü daxil edin:">
+                <input type="text" placeholder="Fin kodunuzu daxil edin:">
+                <input type="text" placeholder="Universiteti daxil edin:">
+                <input type="text" placeholder="Fakultəni daxil edin:">
+                <input type="text" placeholder="Kafedranı daxil edin:">
+            </div>
+            <a>Daxil Et</a>
+        </div>
+    </div>
+</section>
+
+@section css{
+    <link href="~/assets/styles/login.css" rel="stylesheet" />
+}
+

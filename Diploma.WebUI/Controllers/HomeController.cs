@@ -1,6 +1,7 @@
 ﻿using Diploma.WebUI.Models;
 using Diploma.WebUI.Models.DataContexts;
 using Diploma.WebUI.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Diploma.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly DiplomaDbContext db;
